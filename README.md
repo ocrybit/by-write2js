@@ -17,7 +17,7 @@ Options
 
 > `bin` : true to map a `.bin.coffee` file to a no extension file. (e.g. `write2js.bin.coffee` to `write2.js`)  
 > `binDir` : a directory to save  no extension bin files.  
-> `mapper` : an array of key-value pairs to map CoffeeScript source files to output Javascript files. The key is a glob pattern, and the value is an array of arguments to pass to `replace()` method or a `function` that returns a bloolean value.
+> `mapper` : an array of key-value pairs to map CoffeeScript source files to output Javascript files. The key is a glob pattern, and the value is an array of arguments to pass to `replace()` method or a `function` that returns a bloolean value.  
 > `noWrite` : an array of glob patterns for files to ignore.
 
 By-Write2JS uses [minimatch](https://github.com/isaacs/minimatch) without `matchBase` option to match glob patterns.  
