@@ -13,16 +13,30 @@ module.exports = class ByWrite2JS extends EventEmitter
     @mapper = @opts?.mapper ? {}
     @opts.bin ?= false
     @opts.binDir ?= "#{@opts.root}/bin"
+    @noWriteFiles = []
+    if @opts?.noWrite?
+      @_setNoWriteFiles(@opts.noWrite)
 
   _setListeners: (@bystander) ->
     @bystander.by.coffeescript.on('compiled', (data) =>
-        data.jsfile = @_getJSPath(data.file, @mapper)
-        @_writeJS(data)
+        if not @isNoWrite(data.file)
+          data.jsfile = @_getJSPath(data.file, @mapper)
+          @_writeJS(data)
     )
     @bystander.by.coffeescript.on('coffee removed', (file) =>
-      jsfile = @_getJSPath(file, @mapper)
-      @rmJS({file: file, jsfile: jsfile})
+      if not @isNoWrite(file)
+        jsfile = @_getJSPath(file, @mapper)
+        @rmJS({file: file, jsfile: jsfile})
     )
+
+  _setNoWriteFiles: (newFiles) ->
+    @noWriteFiles = _(@noWriteFiles).union(newFiles)
+
+  _isNoWrite: (file) ->
+    for v in @noWriteFiles
+      if minimatch(file, v, {dot : true})
+        return true
+    return false
 
   # #### Replace file extension
   # `txt (String)` : a file path to replace  

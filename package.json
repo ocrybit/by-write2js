@@ -1,6 +1,6 @@
 {
   "name" : "by-write2js",
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "description" : "A Bystander plugin for writing to JavaScript files.",
   "keywords" : ["javascript", "bystander", "write"],
   "bugs" : {"url" : "https://github.com/tomoio/by-write2js/issues"},
