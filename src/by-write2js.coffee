@@ -19,12 +19,12 @@ module.exports = class ByWrite2JS extends EventEmitter
 
   _setListeners: (@bystander) ->
     @bystander.by.coffeescript.on('compiled', (data) =>
-        if not @isNoWrite(data.file)
+        if not @_isNoWrite(data.file)
           data.jsfile = @_getJSPath(data.file, @mapper)
           @_writeJS(data)
     )
     @bystander.by.coffeescript.on('coffee removed', (file) =>
-      if not @isNoWrite(file)
+      if not @_isNoWrite(file)
         jsfile = @_getJSPath(file, @mapper)
         @rmJS({file: file, jsfile: jsfile})
     )

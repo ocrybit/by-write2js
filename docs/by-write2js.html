@@ -19,12 +19,12 @@
 
   <span class="nv">_setListeners: </span><span class="nf">(@bystander) -&gt;</span>
     <span class="nx">@bystander</span><span class="p">.</span><span class="k">by</span><span class="p">.</span><span class="nx">coffeescript</span><span class="p">.</span><span class="kc">on</span><span class="p">(</span><span class="s">&#39;compiled&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="k">if</span> <span class="o">not</span> <span class="nx">@isNoWrite</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="o">not</span> <span class="nx">@_isNoWrite</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">file</span><span class="p">)</span>
           <span class="nv">data.jsfile = </span><span class="nx">@_getJSPath</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">file</span><span class="p">,</span> <span class="nx">@mapper</span><span class="p">)</span>
           <span class="nx">@_writeJS</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="nx">@bystander</span><span class="p">.</span><span class="k">by</span><span class="p">.</span><span class="nx">coffeescript</span><span class="p">.</span><span class="kc">on</span><span class="p">(</span><span class="s">&#39;coffee removed&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span>
-      <span class="k">if</span> <span class="o">not</span> <span class="nx">@isNoWrite</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+      <span class="k">if</span> <span class="o">not</span> <span class="nx">@_isNoWrite</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
         <span class="nv">jsfile = </span><span class="nx">@_getJSPath</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">@mapper</span><span class="p">)</span>
         <span class="nx">@rmJS</span><span class="p">({</span><span class="nv">file: </span><span class="nx">file</span><span class="p">,</span> <span class="nv">jsfile: </span><span class="nx">jsfile</span><span class="p">})</span>
     <span class="p">)</span>
