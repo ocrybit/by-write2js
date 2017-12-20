@@ -56,7 +56,7 @@ See the [annotated source](docs/by-write2js.html) for details.
 Running Tests
 -------------
 
-Run tests with [mocha](http://visionmedia.github.com/mocha/)
+Run tests with [mocha](http://mochajs.org/)
 
     make
 	
